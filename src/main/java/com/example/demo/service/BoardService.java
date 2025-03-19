@@ -11,9 +11,9 @@ public interface BoardService {
 
     public BoardDTO boardDetail(Long bno);
 
-    public void boardRegister(BoardDTO boardDTO);
+    public BoardDTO boardRegister(BoardDTO boardDTO);
 
-    public void boardUpdate(BoardDTO boardDTO);
+    public BoardDTO boardUpdate(BoardDTO boardDTO);
 
     public void boardDelete(Long bno);
 }

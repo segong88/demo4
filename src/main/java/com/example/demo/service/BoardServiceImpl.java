@@ -39,20 +39,25 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public void boardRegister(BoardDTO boardDTO) {
+    public BoardDTO boardRegister(BoardDTO boardDTO) {
 
         //DTO를 entity로 변환
         Board board = modelMapper.map(boardDTO, Board.class);
-        boardRepository.save(board);
+        //저장된 entity를 다시 꺼내서 entitiy를
+        board = boardRepository.save(board);
+        //DTO로 변환 (글 등록하면 해당 bno의 상세보기창을 보여주고싶어서)
+        return modelMapper.map(board, BoardDTO.class);
     }
 
     @Override
-    public void boardUpdate(BoardDTO boardDTO) {
+    public BoardDTO boardUpdate(BoardDTO boardDTO) {
 
         //DTO를 entity로 변환
         Board board = modelMapper.map(boardDTO, Board.class);
-        boardRepository.save(board);
+        //저장된 entity를 다시 꺼내서 DTO에 담고 변환 (글 수정하면 해당 bno의 상세보기창을 보여주고싶어서)
+        board = boardRepository.save(board);
 
+        return modelMapper.map(board, BoardDTO.class);
     }
 
     @Override
